@@ -18,7 +18,6 @@ const Navigation = styled.nav`
     align-items: center;
     gap: 2em;
 
-
     & ul{
         text-decoration: none;
 
@@ -27,10 +26,29 @@ const Navigation = styled.nav`
             display: inline-block;
             padding: 0 .8em;
             cursor: pointer;
+
+            &:hover{
+                color: red;
+            }
         }
     }
- 
 `
+
+const link_navigation = [
+    {title : "un", to : "top"},
+    {title : "deux", to : "deux"},
+    {title : "trois", to : "trois"},
+]
+
+const BuildNavigation = () => {
+    let count = 0;
+    const rslt = link_navigation.map((i, k) => {
+        count = count + 1;
+        return <li key={'nav_' + count}>{count + '. ' + i.title}</li>
+    })
+
+    return rslt
+}
 
 export const HeaderLayout = () => {
     return (
@@ -38,17 +56,9 @@ export const HeaderLayout = () => {
             <div className="left">Logo</div>
             <div className="right">
                 <Navigation>
-                    <ul>
-                        <li>1. un</li>
-                        <li>2. deux</li>
-                        <li>3. trois</li>
-                        <li>4. tamère</li>
-                    </ul>
-                hey je suis une statue bar 😍
+                    <ul><BuildNavigation/></ul>
+                    hey je suis une statue bar 😍
                 </Navigation>
-
-
-                
             </div>
             
         </Container>
